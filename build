@@ -1,0 +1,4 @@
+clear
+cd src
+go build -o groceries
+./groceries 

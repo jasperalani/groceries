@@ -1,0 +1,33 @@
+h1.title {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.box {
+    background: $box-colour-default;
+    padding: 27px 10px;
+}
+
+.form-input {
+    outline: 0;
+    border: 2px solid $submit-button-colour;
+}
+
+.submit-button {
+    background: $submit-button-colour;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    &:focus {
+        outline: 0;
+    }
+}
+
+ul.list {
+    list-style-type: none;
+    li {
+        border-bottom: 2px solid white;
+        margin-bottom: 10px;
+        width: 80%;
+    }
+}
