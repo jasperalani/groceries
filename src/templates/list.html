@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Groceries</title>
+    <link rel="stylesheet" href="/static/dist/css/style.css">
+</head>
+
+<body>
+
+    <div class="center-container">
+        <div class="top-label">
+            <a href="/">home</a>
+        </div>
+
+        <h1 class="title">{{ .title }}</h1>
+
+        <div class="d-flex justify-content-center">
+
+            <div class="d-flex flex-column max-40">
+                <ul class="list box">
+                    {{ range .list }}
+                    <li>{{ . }}</li>
+                    {{ end }}
+                </ul>
+
+
+                <div class="append">
+                    <form class="d-flex" method="post" action="/submitItem">
+
+                        <input class="d-none" name="list-id" value="{{ .list_id }}"/>
+                        <input class="d-none" name="identifier" value="{{ .identifier }}"/>
+
+                        <input class="form-input" name="item-name" placeholder="Add new item" />
+                        <button class="submit-button">
+                            <img class="submit-image" src="/static/dist/res/arrow-pointing-right.png" alt="Submit"/>
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

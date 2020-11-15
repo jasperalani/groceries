@@ -11,3 +11,10 @@ create table items (
 )
 
 select * from lists
+select * from items
+
+SELECT title FROM lists WHERE identifier = 'mJrEnUpJ'
+
+delete from lists where true
+
+insert into items (list_id, text) values (10, "gooble")

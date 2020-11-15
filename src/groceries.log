@@ -1,24 +1,57 @@
-[Groceries] 2020/11/15 - 15:51:33 Successfully connected to database.
+[Groceries] 2020/11/15 - 17:11:53 Successfully connected to database.
 [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
 
 [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
  - using env:	export GIN_MODE=release
  - using code:	gin.SetMode(gin.ReleaseMode)
 
-[GIN-debug] Loaded HTML Templates (3): 
+[GIN-debug] Loaded HTML Templates (4): 
+	- list.html
 	- 
-	- createList.html
+	- blank.html
 	- index.html
 
 [GIN-debug] GET    /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
 [GIN-debug] HEAD   /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
 [GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
-[GIN-debug] GET    /createList               --> main.main.func2 (3 handlers)
-[GIN-debug] POST   /createList               --> main.main.func3 (3 handlers)
-[Groceries] 2020/11/15 - 15:51:33 Application started successfully.
+[GIN-debug] GET    /list/:identifier         --> main.main.func2 (3 handlers)
+[GIN-debug] POST   /submitItem               --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /createList               --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /goToList                 --> main.main.func5 (3 handlers)
+[Groceries] 2020/11/15 - 17:11:53 Application started successfully.
 [GIN-debug] Listening and serving HTTP on :8080
-[GIN] 2020/11/15 - 15:51:34 |[90;47m 301 [0m|    3.415763ms |             ::1 |[97;46m POST    [0m "/createList"
-[GIN] 2020/11/15 - 15:51:34 |[97;42m 200 [0m|     344.632µs |             ::1 |[97;44m GET     [0m "/"
-[GIN] 2020/11/15 - 15:51:36 |[97;42m 200 [0m|     640.111µs |             ::1 |[97;44m GET     [0m "/createList"
-[GIN] 2020/11/15 - 15:51:45 |[90;47m 301 [0m|    3.474335ms |             ::1 |[97;46m POST    [0m "/createList"
-[GIN] 2020/11/15 - 15:51:45 |[97;42m 200 [0m|     462.844µs |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/15 - 17:11:55 |[97;42m 200 [0m|    2.881943ms |             ::1 |[97;44m GET     [0m "/list/RKHE05E9"
+[GIN] 2020/11/15 - 17:11:56 |[90;47m 301 [0m|    2.453394ms |             ::1 |[97;46m POST    [0m "/submitItem"
+[GIN] 2020/11/15 - 17:11:56 |[97;42m 200 [0m|    3.047738ms |             ::1 |[97;44m GET     [0m "/list/RKHE05E9"
+[GIN] 2020/11/15 - 17:11:58 |[90;47m 301 [0m|    3.037031ms |             ::1 |[97;46m POST    [0m "/submitItem"
+[GIN] 2020/11/15 - 17:11:58 |[97;42m 200 [0m|     4.61341ms |             ::1 |[97;44m GET     [0m "/list/RKHE05E9"
+[GIN] 2020/11/15 - 17:12:01 |[90;47m 301 [0m|    1.785595ms |             ::1 |[97;46m POST    [0m "/submitItem"
+[GIN] 2020/11/15 - 17:12:01 |[97;42m 200 [0m|    2.058127ms |             ::1 |[97;44m GET     [0m "/list/RKHE05E9"
+[GIN] 2020/11/15 - 17:12:02 |[90;43m 404 [0m|         769ns |             ::1 |[97;44m GET     [0m "/createList"
+[GIN] 2020/11/15 - 17:12:21 |[90;43m 404 [0m|       1.804µs |             ::1 |[97;44m GET     [0m "/createList"
+[GIN] 2020/11/15 - 17:12:22 |[97;42m 200 [0m|   40.782702ms |             ::1 |[97;44m GET     [0m "/list/RKHE05E9"
+[GIN] 2020/11/15 - 17:12:23 |[97;42m 200 [0m|      299.45µs |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/15 - 17:12:26 |[90;47m 301 [0m|    2.907046ms |             ::1 |[97;46m POST    [0m "/createList"
+[GIN] 2020/11/15 - 17:12:26 |[97;42m 200 [0m|    7.215425ms |             ::1 |[97;44m GET     [0m "/list/burJ2Jxq"
+[GIN] 2020/11/15 - 17:12:27 |[90;47m 301 [0m|    2.582282ms |             ::1 |[97;46m POST    [0m "/submitItem"
+[GIN] 2020/11/15 - 17:12:27 |[97;42m 200 [0m|     3.57673ms |             ::1 |[97;44m GET     [0m "/list/burJ2Jxq"
+[GIN] 2020/11/15 - 17:12:29 |[90;47m 301 [0m|    2.738235ms |             ::1 |[97;46m POST    [0m "/submitItem"
+[GIN] 2020/11/15 - 17:12:29 |[97;42m 200 [0m|   32.920648ms |             ::1 |[97;44m GET     [0m "/list/burJ2Jxq"
+[GIN] 2020/11/15 - 17:12:31 |[97;42m 200 [0m|     197.997µs |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/15 - 17:12:32 |[97;42m 200 [0m|    5.462851ms |             ::1 |[97;44m GET     [0m "/list/burJ2Jxq"
+[GIN] 2020/11/15 - 17:12:34 |[97;42m 200 [0m|    7.070618ms |             ::1 |[97;44m GET     [0m "/list/burJ2Jxq"
+[GIN] 2020/11/15 - 17:12:35 |[97;42m 200 [0m|     563.241µs |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/15 - 17:12:36 |[90;47m 301 [0m|      72.609µs |             ::1 |[97;46m POST    [0m "/goToList"
+[GIN] 2020/11/15 - 17:12:36 |[97;42m 200 [0m|     6.23119ms |             ::1 |[97;44m GET     [0m "/list/burJ2Jxq"
+[GIN] 2020/11/15 - 17:12:38 |[90;47m 301 [0m|    3.495801ms |             ::1 |[97;46m POST    [0m "/submitItem"
+[GIN] 2020/11/15 - 17:12:38 |[97;42m 200 [0m|   20.326533ms |             ::1 |[97;44m GET     [0m "/list/burJ2Jxq"
+[GIN] 2020/11/15 - 17:12:39 |[97;42m 200 [0m|     273.726µs |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/15 - 17:13:03 |[97;42m 200 [0m|     666.357µs |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/15 - 17:19:42 |[97;42m 200 [0m|     528.541µs |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/15 - 17:19:42 |[90;47m 304 [0m|     145.541µs |             ::1 |[97;44m GET     [0m "/static/dist/res/arrow-pointing-right.png"
+[GIN] 2020/11/15 - 17:19:59 |[90;47m 301 [0m|    1.938018ms |             ::1 |[97;46m POST    [0m "/createList"
+[GIN] 2020/11/15 - 17:19:59 |[97;42m 200 [0m|    3.086669ms |             ::1 |[97;44m GET     [0m "/list/eVtkTvMA"
+[GIN] 2020/11/15 - 17:20:05 |[90;47m 301 [0m|    2.725756ms |             ::1 |[97;46m POST    [0m "/submitItem"
+[GIN] 2020/11/15 - 17:20:05 |[97;42m 200 [0m|    5.809458ms |             ::1 |[97;44m GET     [0m "/list/eVtkTvMA"
+[GIN] 2020/11/15 - 17:20:09 |[90;47m 301 [0m|    1.694298ms |             ::1 |[97;46m POST    [0m "/submitItem"
+[GIN] 2020/11/15 - 17:20:09 |[97;42m 200 [0m|    2.406958ms |             ::1 |[97;44m GET     [0m "/list/eVtkTvMA"

@@ -9,32 +9,49 @@
 <body>
 
     <div class="center-container">
-        <div class="top-label">
-            <a href="/createList">create new list</a>
-        </div>
 
-        <h1 class="title">{{ .title }}</h1>
+        {{/* <div class="top-label">
+            <a href="/">back</a>
+        </div> */}}
 
         <div class="d-flex justify-content-center">
 
             <div class="d-flex flex-column max-40">
-                <ul class="list box">
-                    {{ range .list }}
-                    <li>{{ . }}</li>
-                    {{ end }}
-                </ul>
 
+                <div class="create-list">
 
-                <div class="append">
-                    <form class="d-flex" method="post" action="submitItem">
+                    <h3 class="text-center m-5 mb-1">Create list</h3>
 
-                        <input class="form-input" name="item-name" placeholder="Text" />
-                        <button class="submit-button">
-                            <img class="submit-image" src="/static/dist/res/arrow-pointing-right.png" alt="Submit"/>
-                        </button>
+                    <div class="append">
+                        <form class="d-flex" method="post" action="createList">
 
-                    </form>
+                            <input class="form-input" name="item-name" placeholder="Title" />
+                            <button class="submit-button">
+                                <img class="submit-image" src="/static/dist/res/arrow-pointing-right.png" alt="Submit"/>
+                            </button>
+
+                        </form>
+                    </div>
+
                 </div>
+
+                   <div class="create-list">
+
+                    <h3 class="text-center m-5 mb-1">Go to list</h3>
+
+                    <div class="append">
+                        <form class="d-flex" method="post" action="goToList">
+
+                            <input class="form-input" name="identifier" placeholder="Identifier" />
+                            <button class="submit-button">
+                                <img class="submit-image" src="/static/dist/res/arrow-pointing-right.png" alt="Submit"/>
+                            </button>
+
+                        </form>
+                    </div>
+
+                </div>
+
 
             </div>
 

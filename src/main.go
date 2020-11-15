@@ -1,10 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
+	"regexp"
 	"time"
 
 	sq "github.com/Masterminds/squirrel"
@@ -18,12 +20,15 @@ var (
 )
 
 type application struct {
-	log    *os.File
-	db     *sqlx.DB
-	router *gin.Engine
+	log              *os.File
+	db               *sqlx.DB
+	router           *gin.Engine
+	identifierLength int
 }
 
 func main() {
+
+	app.identifierLength = 8
 
 	gin.ForceConsoleColor()
 
@@ -58,8 +63,72 @@ func main() {
 		})
 	})
 
-	app.router.GET("/createList", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "createList.html", gin.H{})
+	app.router.GET("/list/:identifier", func(c *gin.Context) {
+
+		identifier := c.Param("identifier")
+
+		regex := `^[a-zA-Z0-9]{` + fmt.Sprintf("%d", app.identifierLength) + `}$`
+		valid, err := regexp.MatchString(regex, identifier)
+		if err != nil {
+			log.Fatal("Fatal error when matching regexp.")
+		}
+
+		if !valid {
+			c.HTML(http.StatusOK, "blank.html", gin.H{
+				"text": "Invalid list identifier",
+			})
+		}
+
+		getTitleQuery := sq.Select("id", "title").From("lists").Where(sq.Eq{"identifier": identifier})
+		rows, err := getTitleQuery.RunWith(app.db).Query()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		var (
+			id    int
+			title string
+		)
+		rows.Next()
+		rows.Scan(&id, &title)
+
+		var items []string
+
+		getItemsQuery := sq.Select("text").From("items").Where(sq.Eq{"list_id": id})
+		rows, err = getItemsQuery.RunWith(app.db).Query()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		for rows.Next() {
+			var tempItem string
+			rows.Scan(&tempItem)
+			items = append(items, tempItem)
+		}
+
+		c.HTML(http.StatusOK, "list.html", gin.H{
+			"list_id":    id,
+			"identifier": identifier,
+			"title":      title,
+			"list":       items,
+		})
+
+	})
+
+	app.router.POST("/submitItem", func(c *gin.Context) {
+		var listID = c.PostForm("list-id")
+		var text = c.PostForm("item-name")
+		if "" == text {
+			return
+		}
+
+		insertNewItemQuery := sq.Insert("items").Columns("list_id", "text").Values(listID, text)
+		_, err := insertNewItemQuery.RunWith(app.db).Query()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		c.Redirect(301, "/list/"+c.PostForm("identifier"))
 	})
 
 	app.router.POST("/createList", func(c *gin.Context) {
@@ -68,16 +137,20 @@ func main() {
 			return
 		}
 
-		identifier := GenerateIdentifier(8)
+		identifier := GenerateIdentifier(app.identifierLength)
 
-		createNewListQuery := sq.Insert("lists").Columns("title").Values(title)
+		createNewListQuery := sq.Insert("lists").Columns("identifier", "title").Values(identifier, title)
 		_, err := createNewListQuery.RunWith(app.db).Query()
 		if err != nil {
 			// Log error, not fatal
 			app.writeToLog("Error: failed to create new list with name: " + title)
 		}
 
-		c.Redirect(301, "/")
+		c.Redirect(301, "/list/"+identifier)
+	})
+
+	app.router.POST("/goToList", func(c *gin.Context) {
+		c.Redirect(301, "/list/"+c.PostForm("identifier"))
 	})
 
 	app.writeToLog("Application started successfully.")
@@ -94,9 +167,12 @@ func initDB() *sqlx.DB {
 	return db
 }
 
+func formatLog(message string) string {
+	return `[Groceries] ` + time.Now().Format("2006/01/02 - 15:04:05") + " " + message + "\n"
+}
+
 func (app application) writeToLog(message string) bool {
-	var content = `[Groceries] ` + time.Now().Format("2006/01/02 - 15:04:05") + " " + message + "\n"
-	_, err := gin.DefaultWriter.Write([]byte(content))
+	_, err := gin.DefaultWriter.Write([]byte(formatLog(message)))
 	if err != nil {
 		log.Fatal("Failed to write to log: fatal.")
 	}
