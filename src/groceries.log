@@ -1,0 +1,24 @@
+[Groceries] 2020/11/15 - 15:51:33 Successfully connected to database.
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (3): 
+	- 
+	- createList.html
+	- index.html
+
+[GIN-debug] GET    /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /createList               --> main.main.func2 (3 handlers)
+[GIN-debug] POST   /createList               --> main.main.func3 (3 handlers)
+[Groceries] 2020/11/15 - 15:51:33 Application started successfully.
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2020/11/15 - 15:51:34 |[90;47m 301 [0m|    3.415763ms |             ::1 |[97;46m POST    [0m "/createList"
+[GIN] 2020/11/15 - 15:51:34 |[97;42m 200 [0m|     344.632µs |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/15 - 15:51:36 |[97;42m 200 [0m|     640.111µs |             ::1 |[97;44m GET     [0m "/createList"
+[GIN] 2020/11/15 - 15:51:45 |[90;47m 301 [0m|    3.474335ms |             ::1 |[97;46m POST    [0m "/createList"
+[GIN] 2020/11/15 - 15:51:45 |[97;42m 200 [0m|     462.844µs |             ::1 |[97;44m GET     [0m "/"

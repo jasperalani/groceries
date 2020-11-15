@@ -10,11 +10,13 @@ h1.title {
 
 .form-input {
     outline: 0;
-    border: 2px solid $submit-button-colour;
+    border: 4px solid $box-colour-default;
+    width: 100%;
+    padding: 0 10px;
 }
 
 .submit-button {
-    background: $submit-button-colour;
+    background: $box-colour-default;
     border: 0;
     color: white;
     font-weight: bold;
@@ -23,11 +25,41 @@ h1.title {
     }
 }
 
+.submit-image {
+    width: 65px;
+    padding: 10px 20px;
+    min-width: 90px;
+    max-height: 45px;
+}
+
 ul.list {
     list-style-type: none;
+    padding: 30px 40px;
+    margin-bottom: 0;
     li {
         border-bottom: 2px solid white;
         margin-bottom: 10px;
-        width: 80%;
+    }
+}
+
+.max-40 {
+    max-width: 40%;
+}
+
+.mb-1 {
+    margin-bottom: 10px !important;
+}
+
+.top-label {
+    text-align: center;
+    margin-top: 10px;
+    // margin-bottom: -20px;
+    a {
+        color: black;
+        &:hover {
+            text-decoration: none;
+            // padding-bottom: 1px;
+            border-bottom: 1px solid black;
+        }
     }
 }

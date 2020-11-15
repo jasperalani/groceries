@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    
+    mariadb:
+        image: mariadb:10.3.9
+        container_name: groceries-mariadb
+        ports:
+          - '3306:3306'
+        restart: 'on-failure'
+        environment:
+          MYSQL_DATABASE: groceries
+          MYSQL_USER: groceriesdbadmin
+          MYSQL_PASSWORD: groceriesdbpass
+          MYSQL_ROOT_PASSWORD: groceriesdbrootpass
+        volumes:
+          - ${PWD}

@@ -1,3 +1,18 @@
 {
-    "compile-hero.disable-compile-files-on-did-save-code": true
+    "compile-hero.disable-compile-files-on-did-save-code": true,
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "groceries",
+            "database": "groceries",
+            "username": "groceriesdbadmin",
+            "password": "groceriesdbpass"
+        }
+    ]
 }
