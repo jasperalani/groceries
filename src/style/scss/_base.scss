@@ -15,6 +15,10 @@ h1.title {
     padding: 0 10px;
 }
 
+textarea.form-input {
+    min-height: 120px;
+}
+
 .submit-button {
     background: $box-colour-default;
     border: 0;
@@ -39,6 +43,9 @@ ul.list {
     li {
         border-bottom: 2px solid white;
         margin-bottom: 10px;
+        p {
+            margin-bottom: 5px;
+        }
     }
 }
 
@@ -62,4 +69,40 @@ ul.list {
             border-bottom: 1px solid black;
         }
     }
+}
+
+.action-item-image {
+    width: 15px;
+    height: 16px;
+    margin: 5px;
+}
+
+.remove-buttons button {
+    border: 0;
+    padding: 20px 25px;
+    margin: 0 15px 0 16px;
+    background: $box-colour-default;
+    border: 2px solid white;
+    &:hover {
+        border: 2px solid lightseagreen;
+        cursor: pointer;
+    }
+    &:focus {
+        outline: 0;
+    }
+}
+
+a.cancel-editing {
+    width: 100%;
+    button {
+        width: 100%;
+        border: 0;
+        background: $box-colour-default;
+        padding: 10px 0;
+        margin: 12px 0;
+    }
+}
+
+.edit-item-container {
+    min-width: 30%;
 }

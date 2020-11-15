@@ -26,6 +26,11 @@ type application struct {
 	identifierLength int
 }
 
+type item struct {
+	ID   int
+	Text string
+}
+
 func main() {
 
 	app.identifierLength = 8
@@ -92,18 +97,18 @@ func main() {
 		rows.Next()
 		rows.Scan(&id, &title)
 
-		var items []string
+		var items []item
 
-		getItemsQuery := sq.Select("text").From("items").Where(sq.Eq{"list_id": id})
+		getItemsQuery := sq.Select("id", "text").From("items").Where(sq.Eq{"list_id": id})
 		rows, err = getItemsQuery.RunWith(app.db).Query()
 		if err != nil {
 			log.Fatal(err)
 		}
 
 		for rows.Next() {
-			var tempItem string
-			rows.Scan(&tempItem)
-			items = append(items, tempItem)
+			var item item
+			rows.Scan(&item.ID, &item.Text)
+			items = append(items, item)
 		}
 
 		c.HTML(http.StatusOK, "list.html", gin.H{
@@ -128,7 +133,59 @@ func main() {
 			log.Fatal(err)
 		}
 
-		c.Redirect(301, "/list/"+c.PostForm("identifier"))
+		c.Redirect(301, "/list/"+c.PostForm("list-identifier"))
+	})
+
+	app.router.POST("/confirmRemoveItem", func(c *gin.Context) {
+		var (
+			id     = c.PostForm("item-id")
+			listID = c.PostForm("list-identifier")
+		)
+
+		c.HTML(http.StatusOK, "remove.html", gin.H{
+			"id":     id,
+			"listID": listID,
+		})
+	})
+
+	app.router.POST("/removeItem", func(c *gin.Context) {
+		var id = c.PostForm("item-id")
+		if "" == id {
+			return
+		}
+
+		deleteQuery := sq.Delete("items").Where(sq.Eq{"id": id})
+		_, err := deleteQuery.RunWith(app.db).Query()
+		if err != nil {
+			// Log error, not fatal
+			app.writeToLog("Error: failed to delete item with id: " + id)
+		}
+
+		c.Redirect(301, "/list/"+c.PostForm("list-identifier"))
+	})
+
+	app.router.POST("/editingItem", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "edit.html", gin.H{
+			"previousValue": c.PostForm("item-value"),
+			"listID":        c.PostForm("list-identifier"),
+			"id":            c.PostForm("item-id"),
+		})
+	})
+
+	app.router.POST("/editItem", func(c *gin.Context) {
+		/*
+			item-id
+			item-name
+		*/
+		var id = c.PostForm("item-id")
+		updateQuery := sq.Update("items").Set("text", c.PostForm("item-name")).Where(sq.Eq{"id": id})
+		_, err := updateQuery.RunWith(app.db).Query()
+		if err != nil {
+			// Log error, not fatal
+			app.writeToLog("Error: failed to edit item with id: " + id)
+		}
+
+		c.Redirect(301, "/list/"+c.PostForm("list-identifier"))
 	})
 
 	app.router.POST("/createList", func(c *gin.Context) {

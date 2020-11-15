@@ -19,8 +19,23 @@
 
             <div class="d-flex flex-column max-40">
                 <ul class="list box">
-                    {{ range .list }}
-                    <li>{{ . }}</li>
+                    {{ $identifier := .identifier }} {{ range .list }}
+                    <li class="d-flex justify-content-between">
+                        <p>{{ .Text }}</p>
+                        <div class="d-flex">
+                            <form method="post" action="/editingItem">
+                                <input class="d-none" name="item-id" value="{{ .ID }}" />
+                                <input class="d-none" name="item-value" value="{{ .Text }}" />
+                                <input class="d-none" name="list-identifier" value="{{ $identifier }}" />
+                                <input type="image" class="action-item-image" src="/static/dist/res/edit-icon.png" alt="Edit item" />
+                            </form>
+                            <form method="post" action="/confirmRemoveItem">
+                                <input class="d-none" name="item-id" value="{{ .ID }}" />
+                                <input class="d-none" name="list-identifier" value="{{ $identifier }}" />
+                                <input type="image" class="action-item-image" src="/static/dist/res/cross-icon.png" alt="Remove item" />
+                            </form>
+                        </div>
+                    </li>
                     {{ end }}
                 </ul>
 
@@ -28,8 +43,8 @@
                 <div class="append">
                     <form class="d-flex" method="post" action="/submitItem">
 
-                        <input class="d-none" name="list-id" value="{{ .list_id }}"/>
-                        <input class="d-none" name="identifier" value="{{ .identifier }}"/>
+                        <input class="d-none" name="list-id" value="{{ .list_id }}" />
+                        <input class="d-none" name="list-identifier" value="{{ .identifier }}" />
 
                         <input class="form-input" name="item-name" placeholder="Add new item" />
                         <button class="submit-button">

@@ -7170,6 +7170,9 @@ h1.title {
   width: 100%;
   padding: 0 10px; }
 
+textarea.form-input {
+  min-height: 120px; }
+
 .submit-button {
   background: #ffeff9;
   border: 0;
@@ -7191,6 +7194,8 @@ ul.list {
   ul.list li {
     border-bottom: 2px solid white;
     margin-bottom: 10px; }
+    ul.list li p {
+      margin-bottom: 5px; }
 
 .max-40 {
   max-width: 40%; }
@@ -7206,3 +7211,32 @@ ul.list {
     .top-label a:hover {
       text-decoration: none;
       border-bottom: 1px solid black; }
+
+.action-item-image {
+  width: 15px;
+  height: 16px;
+  margin: 5px; }
+
+.remove-buttons button {
+  border: 0;
+  padding: 20px 25px;
+  margin: 0 15px 0 16px;
+  background: #ffeff9;
+  border: 2px solid white; }
+  .remove-buttons button:hover {
+    border: 2px solid lightseagreen;
+    cursor: pointer; }
+  .remove-buttons button:focus {
+    outline: 0; }
+
+a.cancel-editing {
+  width: 100%; }
+  a.cancel-editing button {
+    width: 100%;
+    border: 0;
+    background: #ffeff9;
+    padding: 10px 0;
+    margin: 12px 0; }
+
+.edit-item-container {
+  min-width: 30%; }
