@@ -18,3 +18,5 @@ SELECT title FROM lists WHERE identifier = 'mJrEnUpJ'
 delete from lists where true
 
 insert into items (list_id, text) values (10, "gooble")
+
+drop table lists

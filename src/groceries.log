@@ -1,4 +1,4 @@
-[Groceries] 2020/11/15 - 20:38:49 Successfully connected to database.
+[Groceries] 2020/11/18 - 19:15:11 Successfully connected to database.
 [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
 
 [GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
@@ -6,12 +6,12 @@
  - using code:	gin.SetMode(gin.ReleaseMode)
 
 [GIN-debug] Loaded HTML Templates (6): 
-	- 
-	- blank.html
 	- edit.html
 	- index.html
 	- list.html
 	- remove.html
+	- 
+	- blank.html
 
 [GIN-debug] GET    /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
 [GIN-debug] HEAD   /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
@@ -24,32 +24,42 @@
 [GIN-debug] POST   /editItem                 --> main.main.func7 (3 handlers)
 [GIN-debug] POST   /createList               --> main.main.func8 (3 handlers)
 [GIN-debug] POST   /goToList                 --> main.main.func9 (3 handlers)
-[Groceries] 2020/11/15 - 20:38:49 Application started successfully.
+[Groceries] 2020/11/18 - 19:15:11 Application started successfully.
 [GIN-debug] Listening and serving HTTP on :8080
-[GIN] 2020/11/15 - 20:38:53 |[90;47m 301 [0m|    2.571684ms |             ::1 |[97;46m POST    [0m "/editItem"
-[GIN] 2020/11/15 - 20:38:53 |[90;43m 404 [0m|       1.724µs |             ::1 |[97;44m GET     [0m "/list/"
-[GIN] 2020/11/15 - 20:38:54 |[97;42m 200 [0m|    3.385612ms |             ::1 |[97;44m GET     [0m "/list/m3buFW7C"
-[GIN] 2020/11/15 - 20:38:54 |[97;42m 200 [0m|    2.435719ms |             ::1 |[97;44m GET     [0m "/static/dist/res/edit-icon.png"
-[GIN] 2020/11/15 - 20:38:54 |[97;42m 200 [0m|    2.823879ms |             ::1 |[97;44m GET     [0m "/static/dist/css/style.css"
-[GIN] 2020/11/15 - 20:38:54 |[97;42m 200 [0m|     107.913µs |             ::1 |[97;44m GET     [0m "/static/dist/res/cross-icon.png"
-[GIN] 2020/11/15 - 20:38:54 |[97;42m 200 [0m|      57.229µs |             ::1 |[97;44m GET     [0m "/static/dist/res/arrow-pointing-right.png"
-[GIN] 2020/11/15 - 20:38:56 |[97;42m 200 [0m|    8.837835ms |             ::1 |[97;44m GET     [0m "/list/m3buFW7C"
-[GIN] 2020/11/15 - 20:38:56 |[97;42m 200 [0m|    1.595529ms |             ::1 |[97;46m POST    [0m "/editingItem"
-[GIN] 2020/11/15 - 20:38:58 |[90;47m 301 [0m|    4.145587ms |             ::1 |[97;46m POST    [0m "/editItem"
-[GIN] 2020/11/15 - 20:38:58 |[97;42m 200 [0m|    3.660979ms |             ::1 |[97;44m GET     [0m "/list/m3buFW7C"
-[GIN] 2020/11/15 - 20:38:59 |[97;42m 200 [0m|     446.965µs |             ::1 |[97;46m POST    [0m "/editingItem"
-[GIN] 2020/11/15 - 20:39:01 |[90;47m 301 [0m|    2.901517ms |             ::1 |[97;46m POST    [0m "/editItem"
-[GIN] 2020/11/15 - 20:39:01 |[97;42m 200 [0m|    3.018943ms |             ::1 |[97;44m GET     [0m "/list/m3buFW7C"
-[GIN] 2020/11/15 - 20:39:02 |[90;47m 301 [0m|    1.995813ms |             ::1 |[97;46m POST    [0m "/submitItem"
-[GIN] 2020/11/15 - 20:39:02 |[97;42m 200 [0m|    3.543705ms |             ::1 |[97;44m GET     [0m "/list/m3buFW7C"
-[GIN] 2020/11/15 - 20:39:04 |[97;42m 200 [0m|    1.494797ms |             ::1 |[97;46m POST    [0m "/confirmRemoveItem"
-[GIN] 2020/11/15 - 20:39:05 |[90;47m 301 [0m|     4.31343ms |             ::1 |[97;46m POST    [0m "/removeItem"
-[GIN] 2020/11/15 - 20:39:05 |[97;42m 200 [0m|    3.010752ms |             ::1 |[97;44m GET     [0m "/list/m3buFW7C"
-[GIN] 2020/11/15 - 20:39:06 |[97;42m 200 [0m|     589.095µs |             ::1 |[97;46m POST    [0m "/editingItem"
-[GIN] 2020/11/15 - 20:39:10 |[90;47m 301 [0m|    2.926308ms |             ::1 |[97;46m POST    [0m "/editItem"
-[GIN] 2020/11/15 - 20:39:10 |[97;42m 200 [0m|    2.978454ms |             ::1 |[97;44m GET     [0m "/list/m3buFW7C"
-[GIN] 2020/11/15 - 20:39:14 |[97;42m 200 [0m|     370.063µs |             ::1 |[97;46m POST    [0m "/confirmRemoveItem"
-[GIN] 2020/11/15 - 20:39:14 |[90;47m 301 [0m|    4.835148ms |             ::1 |[97;46m POST    [0m "/removeItem"
-[GIN] 2020/11/15 - 20:39:14 |[97;42m 200 [0m|    2.986994ms |             ::1 |[97;44m GET     [0m "/list/m3buFW7C"
-[GIN] 2020/11/15 - 20:39:16 |[90;47m 301 [0m|    2.787067ms |             ::1 |[97;46m POST    [0m "/submitItem"
-[GIN] 2020/11/15 - 20:39:16 |[97;42m 200 [0m|    7.303382ms |             ::1 |[97;44m GET     [0m "/list/m3buFW7C"
+[GIN] 2020/11/18 - 19:15:11 |[97;42m 200 [0m|    1.310929ms |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/18 - 19:15:12 |[97;42m 200 [0m|    5.091878ms |             ::1 |[97;44m GET     [0m "/list/rnr20H0S"
+[GIN] 2020/11/18 - 19:15:14 |[97;42m 200 [0m|    2.284099ms |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/18 - 19:15:15 |[97;42m 200 [0m|    5.298271ms |             ::1 |[97;44m GET     [0m "/list/rnr20H0S"
+[GIN] 2020/11/18 - 19:15:16 |[97;42m 200 [0m|    1.628982ms |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/18 - 19:15:24 |[90;47m 301 [0m|    2.758165ms |             ::1 |[97;46m POST    [0m "/createList"
+[GIN] 2020/11/18 - 19:15:24 |[97;42m 200 [0m|     7.69849ms |             ::1 |[97;44m GET     [0m "/list/VQivO2cY"
+[GIN] 2020/11/18 - 19:15:25 |[90;47m 301 [0m|    2.594359ms |             ::1 |[97;46m POST    [0m "/submitItem"
+[GIN] 2020/11/18 - 19:15:25 |[97;42m 200 [0m|    3.693685ms |             ::1 |[97;44m GET     [0m "/list/VQivO2cY"
+[GIN] 2020/11/18 - 19:15:25 |[97;42m 200 [0m|    2.386928ms |             ::1 |[97;44m GET     [0m "/static/dist/res/edit-icon.png"
+[GIN] 2020/11/18 - 19:15:25 |[97;42m 200 [0m|    2.487282ms |             ::1 |[97;44m GET     [0m "/static/dist/res/cross-icon.png"
+[GIN] 2020/11/18 - 19:15:33 |[97;42m 200 [0m|    1.289573ms |             ::1 |[97;46m POST    [0m "/editingItem"
+[GIN] 2020/11/18 - 19:15:38 |[97;42m 200 [0m|    3.404558ms |             ::1 |[97;44m GET     [0m "/list/VQivO2cY"
+[GIN] 2020/11/18 - 19:15:51 |[97;42m 200 [0m|    1.962919ms |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/18 - 19:16:15 |[97;42m 200 [0m|    2.164767ms |             ::1 |[97;44m GET     [0m "/list/rnr20H0S"
+[GIN] 2020/11/18 - 19:16:15 |[97;42m 200 [0m|     177.718µs |             ::1 |[97;44m GET     [0m "/static/dist/css/style.css"
+[GIN] 2020/11/18 - 19:16:15 |[97;42m 200 [0m|      48.891µs |             ::1 |[97;44m GET     [0m "/static/dist/res/arrow-pointing-right.png"
+[GIN] 2020/11/18 - 19:16:17 |[90;47m 301 [0m|    2.535127ms |             ::1 |[97;46m POST    [0m "/submitItem"
+[GIN] 2020/11/18 - 19:16:17 |[97;42m 200 [0m|    5.882965ms |             ::1 |[97;44m GET     [0m "/list/rnr20H0S"
+[GIN] 2020/11/18 - 19:16:17 |[97;42m 200 [0m|     106.454µs |             ::1 |[97;44m GET     [0m "/static/dist/res/edit-icon.png"
+[GIN] 2020/11/18 - 19:16:17 |[97;42m 200 [0m|      76.201µs |             ::1 |[97;44m GET     [0m "/static/dist/res/cross-icon.png"
+[GIN] 2020/11/18 - 19:17:48 |[97;42m 200 [0m|    2.994025ms |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/18 - 19:17:49 |[97;42m 200 [0m|    2.159459ms |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/18 - 19:17:50 |[97;42m 200 [0m|     585.929µs |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/18 - 19:17:50 |[97;42m 200 [0m|      37.465µs |             ::1 |[97;44m GET     [0m "/static/dist/res/arrow-pointing-right.png"
+[GIN] 2020/11/18 - 19:17:50 |[97;42m 200 [0m|     204.888µs |             ::1 |[97;44m GET     [0m "/static/dist/css/style.css"
+[GIN] 2020/11/18 - 19:17:50 |[90;43m 404 [0m|       1.798µs |             ::1 |[97;44m GET     [0m "/favicon.ico"
+[GIN] 2020/11/18 - 19:17:58 |[97;42m 200 [0m|    2.015336ms |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/18 - 19:17:58 |[97;42m 200 [0m|      51.378µs |             ::1 |[97;44m GET     [0m "/static/dist/res/arrow-pointing-right.png"
+[GIN] 2020/11/18 - 19:17:58 |[97;42m 200 [0m|     251.361µs |             ::1 |[97;44m GET     [0m "/static/dist/css/style.css"
+[GIN] 2020/11/18 - 19:17:58 |[90;43m 404 [0m|        3.36µs |             ::1 |[97;44m GET     [0m "/favicon.ico"
+[GIN] 2020/11/18 - 19:18:03 |[97;42m 200 [0m|    5.262854ms |             ::1 |[97;44m GET     [0m "/list/rnr20H0S"
+[GIN] 2020/11/18 - 19:18:03 |[97;42m 200 [0m|      62.236µs |             ::1 |[97;44m GET     [0m "/static/dist/res/edit-icon.png"
+[GIN] 2020/11/18 - 19:18:03 |[97;42m 200 [0m|     219.162µs |             ::1 |[97;44m GET     [0m "/static/dist/css/style.css"
+[GIN] 2020/11/18 - 19:18:03 |[97;42m 200 [0m|       52.13µs |             ::1 |[97;44m GET     [0m "/static/dist/res/cross-icon.png"
+[GIN] 2020/11/18 - 19:18:06 |[97;42m 200 [0m|    1.677154ms |             ::1 |[97;44m GET     [0m "/"
+[GIN] 2020/11/18 - 19:18:06 |[97;42m 200 [0m|     222.401µs |             ::1 |[97;44m GET     [0m "/static/dist/css/style.css"

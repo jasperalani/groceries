@@ -31,6 +31,11 @@ type item struct {
 	Text string
 }
 
+type list struct {
+	Identifier string
+	Title      string
+}
+
 func main() {
 
 	app.identifierLength = 8
@@ -49,12 +54,6 @@ func main() {
 
 	gin.SetMode(gin.DebugMode)
 
-	var list = []string{
-		"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in turpis porta, feugiat lacus nec, ornare lacus. Fusce faucibus accumsan est, quis tempor urna accumsan quis. Nulla in pretium tellus, sed porttitor turpis. Vestibulum accumsan porta tristique. Nunc purus neque, sagittis eget eros sed, cursus vehicula orci. ",
-		"poodle",
-		"doodle",
-	}
-
 	app.router = gin.Default()
 
 	app.router.LoadHTMLGlob("templates/*")
@@ -62,10 +61,37 @@ func main() {
 	app.router.StaticFS("/static", http.Dir("./static"))
 
 	app.router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", gin.H{
-			"title": "Title of list",
-			"list":  list,
-		})
+		var (
+			object    gin.H
+			listEmpty = false
+		)
+
+		getListsQuery := sq.Select("identifier", "title").From("lists")
+		rows, err := getListsQuery.RunWith(app.db).Query()
+		if err != nil {
+			app.writeToLog("Failed to retrieve lists")
+		}
+
+		var lists []list
+
+		for rows.Next() {
+			var list list
+			rows.Scan(&list.Identifier, &list.Title)
+			lists = append(lists, list)
+		}
+
+		if len(lists) == 0 {
+			listEmpty = true
+		}
+
+		log.Println(listEmpty)
+
+		object = gin.H{
+			"list_not_empty": !listEmpty,
+			"lists":          lists,
+		}
+
+		c.HTML(http.StatusOK, "index.html", object)
 	})
 
 	app.router.GET("/list/:identifier", func(c *gin.Context) {
@@ -186,6 +212,7 @@ func main() {
 		}
 
 		c.Redirect(301, "/list/"+c.PostForm("list-identifier"))
+
 	})
 
 	app.router.POST("/createList", func(c *gin.Context) {

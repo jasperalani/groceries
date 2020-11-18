@@ -106,3 +106,13 @@ a.cancel-editing {
 .edit-item-container {
     min-width: 30%;
 }
+
+.list-of-lists {
+    a {
+        text-decoration: none;
+        color: black;
+        &:hover {
+            color: grey;
+        }
+    }
+}

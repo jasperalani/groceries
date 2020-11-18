@@ -10,7 +10,8 @@
 
     <div class="center-container">
 
-        {{/* <div class="top-label">
+        {{/*
+        <div class="top-label">
             <a href="/">back</a>
         </div> */}}
 
@@ -25,7 +26,7 @@
                     <div class="append">
                         <form class="d-flex" method="post" action="createList">
 
-                            <input class="form-input" name="item-name" placeholder="Title" />
+                            <input class="form-input" name="item-name" placeholder="Title" required />
                             <button class="submit-button">
                                 <img class="submit-image" src="/static/dist/res/arrow-pointing-right.png" alt="Submit"/>
                             </button>
@@ -35,7 +36,7 @@
 
                 </div>
 
-                   <div class="create-list">
+                <div class="go-to-list">
 
                     <h3 class="text-center m-5 mb-1">Go to list</h3>
 
@@ -52,6 +53,15 @@
 
                 </div>
 
+                {{ if .list_not_empty }}
+                <div class="list-of-lists">
+                    <ul class="list box">
+                        {{ range .lists }}
+                        <li><a href="/list/{{ .Identifier }}">{{ .Title }}</a></li>
+                        {{ end }}
+                    </ul>
+                </div>
+                {{ end }}
 
             </div>
 
